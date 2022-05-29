@@ -1,13 +1,12 @@
 import "./CatsList.css";
+import CatCard from "../CatCard/CatCard";
 
 function CatsList({ cats }) {
   return (
     <section className="cats" aria-label="Кошки">
       <ul className="cats__list">
         {cats.map((item) => (
-          <li key={item.id}>
-            <img src={item.url} alt={item.id} />
-          </li>
+          <CatCard key={item.id} cat={item} />
         ))}
       </ul>
     </section>
