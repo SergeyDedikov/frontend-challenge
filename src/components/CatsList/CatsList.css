@@ -1,0 +1,11 @@
+.cats__list {
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--padding-main);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: calc(100vw / 30);
+  padding-top: 52px;
+  padding-bottom: 30px;
+}
