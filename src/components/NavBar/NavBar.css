@@ -6,11 +6,6 @@
   box-sizing: border-box;
 }
 
-.navigation__links {
-  list-style-type: none;
-  padding-inline-start: 0;
-}
-
 .navigation__link {
   padding: 24px 20px;
   color: rgba(255, 255, 255, 0.7);

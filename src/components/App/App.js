@@ -12,7 +12,13 @@ export default function App() {
   const [favoriteCats, setFavoriteCats] = useState([]);
 
   useEffect(() => {
-    setOnLoad(true);
+    api
+      .getData()
+      .then((data) => {
+        setCats(data);
+        setOnLoad(true);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return onLoad ? (
@@ -25,7 +31,7 @@ export default function App() {
           <Route path="/" element={<CatsList cats={cats} />} />
           <Route
             path="/favorite-cats"
-            element={<CatsList favoriteCats={favoriteCats} />}
+            element={<CatsList cats={favoriteCats} />}
           />
         </Routes>
       </main>

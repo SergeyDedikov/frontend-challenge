@@ -49,6 +49,11 @@
   align-items: center;
 }
 
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
 .button {
   color: inherit;
   margin: 0 auto;
