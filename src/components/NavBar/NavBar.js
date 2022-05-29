@@ -4,16 +4,16 @@ import "./NavBar.css";
 
 function NavBar() {
   return (
-    <nav className="navigation">
-      <ul className="navigation__links">
+    <nav className="navigation flex-container">
+      <ul className="navigation__links flex-container">
         <li>
-          <NavLink to="/" className={`navigation__link button`}>
+          <NavLink to="/" className="navigation__link button">
             Все котики
           </NavLink>
         </li>
         <li>
-          <NavLink to="/favorite-cats" className={`navigation__link button`}>
-            Все котики
+          <NavLink to="/favorite-cats" className="navigation__link button">
+            Любимые котики
           </NavLink>
         </li>
       </ul>

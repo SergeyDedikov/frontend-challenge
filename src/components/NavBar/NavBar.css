@@ -1,15 +1,22 @@
-.navigation__links {
+.navigation {
+  position: relative;
+  height: 64px;
+  padding: var(--padding-main);
   background-color: var(--background-color-2);
-  color: var(--secondary-color);
-  margin: 0;
+  box-sizing: border-box;
+}
+
+.navigation__links {
   list-style-type: none;
   padding-inline-start: 0;
-  display: flex;
-  align-items: center;
 }
 
 .navigation__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 24px 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.active {
+  background-color: var(--background-color-1);
+  color: var(--secondary-color);
 }
