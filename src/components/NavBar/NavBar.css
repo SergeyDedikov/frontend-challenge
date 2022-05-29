@@ -1,0 +1,15 @@
+.navigation__links {
+  background-color: var(--background-color-2);
+  color: var(--secondary-color);
+  margin: 0;
+  list-style-type: none;
+  padding-inline-start: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

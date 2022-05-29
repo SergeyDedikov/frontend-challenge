@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import api from "../../utils/api";
+import CatsList from "../CatsList/CatsList";
+import NavBar from "../NavBar/NavBar";
 
 export default function App() {
   const [onLoad, setOnLoad] = useState(false);
