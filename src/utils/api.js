@@ -1,5 +1,5 @@
 const BASE_URL_API =
-  "https://api.thecatapi.com/v1/images/search?limit=15&size=full";
+  "https://api.thecatapi.com/v1/images/search?limit=100&size=small";
 const API_KEY = "6ce97757-eab3-47e6-b462-e1f680e85366";
 
 class Api {
