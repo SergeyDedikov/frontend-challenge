@@ -11,7 +11,7 @@ export default function App() {
   const [cats, setCats] = useState([]);
 
   const [favoriteCats, setFavoriteCats] = useState(
-    localStorage.getItem("cats") || []
+    JSON.parse(localStorage.getItem("cats")) || []
   );
 
   useEffect(() => {
