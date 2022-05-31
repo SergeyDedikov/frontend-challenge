@@ -1,7 +1,7 @@
 import "./CatsList.css";
 import CatCard from "../CatCard/CatCard";
 
-function CatsList({ cats, isLiked, ...props }) {
+function CatsList({ cats, ...props }) {
   const loadMessage = <p>... загружаем ещё котиков ...</p>;
 
   return (
@@ -11,7 +11,7 @@ function CatsList({ cats, isLiked, ...props }) {
           <CatCard key={item.id} cat={item} {...props} />
         ))}
       </ul>
-      {!isLiked && loadMessage}
+      {!props.isLiked && loadMessage}
     </section>
   );
 }
