@@ -7,7 +7,9 @@ function CatCard({ cat }) {
 
   return (
     <li className="cat" style={styleBackgroundImage}>
-      {/* <img className="cat__like" src={} alt={} /> */}
+      <div className="cat__overlay">
+        <button className="cat__button-like button"></button>
+      </div>
     </li>
   );
 }
