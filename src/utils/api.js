@@ -1,5 +1,4 @@
-const BASE_URL_API =
-  "https://api.thecatapi.com/v1/images/search?limit=30&size=small";
+const BASE_URL_API = "https://api.thecatapi.com/v1/images/search";
 const API_KEY = "6ce97757-eab3-47e6-b462-e1f680e85366";
 
 class Api {
@@ -23,7 +22,14 @@ class Api {
   };
 
   getData() {
-    return fetch(`${this._url}`, {
+    return fetch(`${this._url}?limit=25&page=1&order=ASC&size=small`, {
+      method: "GET",
+      headers: this._headers,
+    }).then(this._checkResult);
+  }
+
+  addMoreData(page) {
+    return fetch(`${this._url}?limit=25&page=${page}&order=ASC&size=small`, {
       method: "GET",
       headers: this._headers,
     }).then(this._checkResult);
