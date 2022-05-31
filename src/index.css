@@ -17,6 +17,7 @@
     #fff 58.85%
   );
   --padding-main: 0 62px;
+  --height-menu: 64px;
 }
 
 .page {

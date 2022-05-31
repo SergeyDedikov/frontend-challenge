@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: calc(100vw / 30);
-  padding-top: 52px;
+  padding-top: calc(52px + var(--height-menu));
   padding-bottom: 30px;
 }
 
