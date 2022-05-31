@@ -70,6 +70,6 @@ export default function App() {
       </main>
     </>
   ) : (
-    <p>Загрузка...</p>
+    <p>Загружаем котиков...</p>
   );
 }
