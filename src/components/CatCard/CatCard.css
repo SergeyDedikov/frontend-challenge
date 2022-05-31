@@ -1,4 +1,5 @@
 .cat {
+  --gap: calc(100% / 11);
   position: relative;
   aspect-ratio: 1 / 1;
   background: center / cover no-repeat;
@@ -32,11 +33,10 @@
 }
 
 .cat__button-like {
-  --gap: 1.5em;
   position: absolute;
   padding: var(--gap);
   right: var(--gap);
-  bottom: var(--gap);
+  bottom: calc(var(--gap) * 2);
   background: no-repeat url(../../images/favorite_not-active.svg) center / cover;
   opacity: 1;
 }
