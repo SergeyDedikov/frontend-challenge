@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import "./App.css";
 import api from "../../utils/api";
@@ -9,7 +9,8 @@ import NavBar from "../NavBar/NavBar";
 export default function App() {
   const [onLoad, setOnLoad] = useState(false);
   const [cats, setCats] = useState([]);
-
+  const [countPage, setCountPage] = useState(1);
+  const { pathname } = useLocation();
   const [favoriteCats, setFavoriteCats] = useState(
     JSON.parse(localStorage.getItem("cats")) || []
   );
@@ -38,6 +39,55 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("cats", JSON.stringify(favoriteCats));
   }, [favoriteCats]);
+
+  async function addMoreData(page) {
+    await api
+      .addMoreData(countPage)
+      .then((moreCats) => {
+        setCats((cats) => cats.concat(moreCats));
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    countPage > 1 && pathname === "/" && addMoreData(countPage);
+  }, [countPage]);
+
+  async function handleCount() {
+    setCountPage((state) => state + 1);
+  }
+
+  function checkPosition() {
+    const height = document.body.offsetHeight;
+    const screenHeight = window.innerHeight;
+    const scrolled = window.scrollY;
+    const threshold = height - screenHeight / 4;
+    const position = scrolled + screenHeight;
+    if (position >= threshold) {
+      handleCount();
+    }
+  }
+
+  function throttle(callee, timeout) {
+    let timer = null;
+    return function perform(...args) {
+      if (timer) return;
+      timer = setTimeout(() => {
+        callee(...args);
+        clearTimeout(timer);
+        timer = null;
+      }, timeout);
+    };
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", throttle(checkPosition, 1000));
+    window.addEventListener("resize", throttle(checkPosition, 1000));
+    return () => {
+      window.addEventListener("scroll", null);
+      window.addEventListener("resize", null);
+    };
+  }, []);
 
   return onLoad ? (
     <>

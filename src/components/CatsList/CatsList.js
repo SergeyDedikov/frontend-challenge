@@ -1,7 +1,9 @@
 import "./CatsList.css";
 import CatCard from "../CatCard/CatCard";
 
-function CatsList({ cats, ...props }) {
+function CatsList({ cats, isLiked, ...props }) {
+  const loadMessage = <p>... загружаем ещё котиков ...</p>;
+
   return (
     <section className="cats" aria-label="Кошки">
       <ul className="cats__list">
@@ -9,6 +11,7 @@ function CatsList({ cats, ...props }) {
           <CatCard key={item.id} cat={item} {...props} />
         ))}
       </ul>
+      {!isLiked && loadMessage}
     </section>
   );
 }
