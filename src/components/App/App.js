@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import api from "../../utils/api";
@@ -14,8 +14,10 @@ export default function App() {
   const [favoriteCats, setFavoriteCats] = useState(
     JSON.parse(localStorage.getItem("cats")) || []
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
+    pathname !== "/" && navigate("/");
     api
       .getData()
       .then((data) => {
