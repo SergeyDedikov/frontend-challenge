@@ -9,7 +9,10 @@ import NavBar from "../NavBar/NavBar";
 export default function App() {
   const [onLoad, setOnLoad] = useState(false);
   const [cats, setCats] = useState([]);
-  const [favoriteCats, setFavoriteCats] = useState([]);
+
+  const [favoriteCats, setFavoriteCats] = useState(
+    localStorage.getItem("cats") || []
+  );
 
   useEffect(() => {
     api
@@ -21,6 +24,21 @@ export default function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  function handleOnLike(selectedCat) {
+    // Проверяем, есть ли этот кот среди любимых
+    const isLiked = favoriteCats.some((c) => c.id === selectedCat.id);
+    // Добавляем, если его нет
+    !isLiked && setFavoriteCats([selectedCat, ...favoriteCats]);
+  }
+
+  function handleOnDislike(selectedCat) {
+    setFavoriteCats((state) => state.filter((c) => c.id !== selectedCat.id));
+  }
+
+  useEffect(() => {
+    localStorage.setItem("cats", JSON.stringify(favoriteCats));
+  }, [favoriteCats]);
+
   return onLoad ? (
     <>
       <header>
@@ -28,10 +46,25 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<CatsList cats={cats} />} />
+          <Route
+            path="/"
+            element={
+              <CatsList
+                cats={cats}
+                onLikeClick={handleOnLike}
+                isLiked={false}
+              />
+            }
+          />
           <Route
             path="/favorite-cats"
-            element={<CatsList cats={favoriteCats} />}
+            element={
+              <CatsList
+                cats={favoriteCats}
+                onLikeClick={handleOnDislike}
+                isLiked={true}
+              />
+            }
           />
         </Routes>
       </main>
