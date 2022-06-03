@@ -17,7 +17,7 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    pathname !== "/" && navigate("/");
+    navigate("/");
     api
       .getData()
       .then((data) => {
