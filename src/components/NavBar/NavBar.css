@@ -1,6 +1,8 @@
 .navigation {
   z-index: 999;
   position: fixed;
+  left: 0;
+  top: 0;
   height: var(--height-menu);
   padding: var(--padding-main);
   background-color: var(--background-color-2);
